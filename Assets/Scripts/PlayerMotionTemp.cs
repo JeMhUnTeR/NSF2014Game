@@ -8,14 +8,13 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (Rigidbody))]
 public class PlayerMotionTemp : MonoBehaviour {
 
 	public float Speed = 100.0f;
 
-	void Update () {
+	void FixedUpdate () {
 		float x = Input.GetAxis ("Horizontal");
 		float z = Input.GetAxis ("Vertical");
-		rigidbody.AddRelativeForce (new Vector3 (x, 0, z) * Time.deltaTime * Speed);
+		transform.Translate(new Vector3 (x, 0, z) * Time.deltaTime * Speed, Space.Self);
 	}
 }
