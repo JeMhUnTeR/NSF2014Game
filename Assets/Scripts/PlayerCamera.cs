@@ -13,7 +13,7 @@ using System.Collections;
 public class PlayerCamera : MonoBehaviour {
 
 	private Transform Player;			// would be type Animator after character change
-	private Transform Crosshair;
+	// private Transform Crosshair;
 	private Transform CameraFollow;		// camera target transform (camera's target position)
 	private Transform CameraFollowRig;	// camera target transform rig
 
@@ -31,12 +31,12 @@ public class PlayerCamera : MonoBehaviour {
 	void Start () {
 		// get tagged objects
 		Player = GameObject.FindWithTag("Player").transform;
-		Crosshair = GameObject.FindWithTag("Crosshair").transform;
+		// Crosshair = GameObject.FindWithTag("Crosshair").transform;
 		CameraFollow = GameObject.FindWithTag("CameraFollow").transform;
 		CameraFollowRig = GameObject.FindWithTag("CameraFollowRig").transform;
 	}
 
-	void FixedUpdate () {
+	void Update () {
 		
 		/*=======================================
 		=            Camera Rotation            =
@@ -53,6 +53,7 @@ public class PlayerCamera : MonoBehaviour {
 		// rotate player along the x and y
 		if (true) {
 			Player.Rotate(Vector3.up * mouseX * Time.deltaTime * MouseSensitivityX, Space.Self);
+			CameraFollowRig.Rotate(new Vector3(1, 0, 0) * mouseY * Time.deltaTime * MouseSensitivityY, Space.Self);
 		}
 
 		/**
